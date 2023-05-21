@@ -42,7 +42,7 @@ public class BatchConfiguration {
 
 	@Bean
 	public Step createStep() {
-		return stepBuilderFactory.get("MyStep").<Sentence, Sentence>chunk(10).reader(sentenceReader)
+		return stepBuilderFactory.get("MyStep").<Sentence, Sentence>chunk(100).reader(sentenceReader)
 				.writer(sentenceWriter).build();
 	}
 
