@@ -10,13 +10,13 @@ public class Sentence {
 	@Id
 	@Column(name = "id")
 	private String id;
-	@Column(name = "eng_text", length = 1024)
+	@Column(name = "eng_text", length = 10000)
 	private String engText;
 	@Column(name = "audio_url")
 	private String audioUrl;
 	@Column(name = "vie_id")
 	private String vieId;
-	@Column(name = "vie_text", length = 1024)
+	@Column(name = "vie_text", length = 10000)
 	private String vieText;
 
 	public String getId() {
