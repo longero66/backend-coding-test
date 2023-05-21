@@ -1,5 +1,7 @@
 package com.example.demo.config;
 
+import java.util.UUID;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -74,12 +76,13 @@ public class BatchConfiguration {
 
 	@Bean
 	public Job createJob() {
-		return jobBuilderFactory.get("MyJob").incrementer(new RunIdIncrementer()).flow(createStep()).end().build();
+		return jobBuilderFactory.get(UUID.randomUUID().toString()).incrementer(new RunIdIncrementer())
+				.flow(createStep()).end().build();
 	}
 
 	@Bean
 	public Step createStep() {
-		return stepBuilderFactory.get("MyStep").<String, Sentence>chunk(100).reader(sentenceReader)
+		return stepBuilderFactory.get(UUID.randomUUID().toString()).<String, Sentence>chunk(100).reader(sentenceReader)
 				.processor(sentenceProcessor).writer(sentenceWriter).build();
 	}
 
